@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Howarts Student List</title>
-    <script src="style.css"></script>
+    <title>Cleaning Hogwarts Data</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <header>
         <h1>Hogwarts School of Witchcraft and Wizardry</h1>
     </header>
-    <main>
-        <div class="sectionwrapper">
+        <!-- <div class="sectionwrapper">
             <template id="studentTemplate">
                 <div class="student">
                     <h2 class="studentName">Full name</h2>
@@ -21,16 +20,14 @@
                     <h2 class="lastName">last name</h2>
                     <h2 class="nickName1">middle name 1</h2>
                     <h2 class="nickName2">middle name 2</h2>
-                    <img class="image" src="" alt="studentPhot"> 
+                    <img class="image" src="" alt="studentPhoto"> 
                     <h2 class="house">house</h2>
                     <h2 class="gender">gender</h2>
                 </div>
             </template>
+        </div> -->
 
-        </div>
-
-    </main>
-    <div class="modalBackground hide">
+    <!-- <div class="modalBackground hide">
         <div class="modelContent">
             <h2 class="modalStudentName">Student Name</h2>
             <h2 class="modalHouse">house</h2>
@@ -39,10 +36,20 @@
             <img class="modalImage" src="" alt="studentPhoto">
             <div class="modalColor"></div>
         </div>
-    </div>
-    <footer>
+    </div> -->
 
-    </footer>
+    <template id="student">
+        <tr>
+          <td data-field="firstName">FIRST NAME</td>
+          <td data-field="lastName">LAST NAME</td>
+          <td data-field="middleName">MIDDLE NAME</td>
+          <td data-field="nickName">NICK NAME</td>
+          <td data-field="gender">GENDER</td>
+          <td data-field="house">HOUSE</td>
+          <td data-field="image"><img class="" src="images/" alt=""></td>
+        </tr>
+      </template>
+    
 <script src="script.js"></script>  
 </body>
 </html>
