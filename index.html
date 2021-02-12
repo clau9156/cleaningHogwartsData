@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Howarts Student List</title>
+    <script src="style.css"></script>
+</head>
+<body>
+    <header>
+        <h1>Hogwarts School of Witchcraft and Wizardry</h1>
+    </header>
+    <main>
+        <div class="sectionwrapper">
+            <template id="studentTemplate">
+                <div class="student">
+                    <h2 class="studentName">Full name</h2>
+                    <h2 class="firstName">first name</h2>
+                    <h2 class="middleName">middle name</h2>
+                    <h2 class="lastName">last name</h2>
+                    <h2 class="nickName1">middle name 1</h2>
+                    <h2 class="nickName2">middle name 2</h2>
+                    <img class="image" src="" alt="studentPhot"> 
+                    <h2 class="house">house</h2>
+                    <h2 class="gender">gender</h2>
+                </div>
+            </template>
+
+        </div>
+
+    </main>
+    <div class="modalBackground hide">
+        <div class="modelContent">
+            <h2 class="modalStudentName">Student Name</h2>
+            <h2 class="modalHouse">house</h2>
+            <h2 class="modalGender">gender</h2>
+            
+            <img class="modalImage" src="" alt="studentPhoto">
+            <div class="modalColor"></div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+<script src="script.js"></script>  
+</body>
+</html>
