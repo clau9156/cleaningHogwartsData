@@ -40,6 +40,8 @@ function prepareObjects(jsonData) {
         // .split()
         const firstSpace = flSpace.indexOf(" ");
         const lastSpace = flSpace.lastIndexOf(" ");
+        // const hyphen = flSpace.indexOf("-");
+        // const quotation = flSpace.indexOf(`"`);
         // first letter
         // .substring(0,1).toUpperCase();
         // rest
@@ -59,16 +61,32 @@ function prepareObjects(jsonData) {
         student.firstName = flSpace.substring(0,firstSpace);
         student.firstName = student.firstName.substring(0,1).toUpperCase() + student.firstName.substring(1).toLowerCase();
 
-        // lastName
-        student.lastName = flSpace.substring(lastSpace, 0);
-        student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();
+        // lastName (-)
+        student.lastName = flSpace.substring(lastSpace).trim();
+        // student.lastName = student.lastName.substring(0, hyphen) 
+        // student.lastName = student.lastName.split("-");
+        const hyphen = student.lastName.indexOf("-");
+        if (hyphen == -1) {
+            student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();        
+        } else {
+            student.lastName = student.lastName.substring(0, 1).toUpperCase() + student.lastName.substring(1, hyphen+1).toLowerCase() + student.lastName.substring(hyphen+1, hyphen+2).toUpperCase() + student.lastName.substring(hyphen+2).toLowerCase();
+        }
+        // student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();
+
         // middleName
-        student.middleName = flSpace.substring(firstSpace,lastSpace);
-        student.middleName = student.middleName.substring(0,1).toUpperCase() + student.middleName.substring(1).toLowerCase();
-
-        // nickName
-
-        student.nickName = student.nickName.substring(0,1).toUpperCase() + student.nickName.substring(1).toLowerCase();
+        student.middleName = flSpace.substring(firstSpace,lastSpace).trim();
+        // student.middleName = student.middleName.substring(0,1).toUpperCase() + student.middleName.substring(1).toLowerCase()
+        // nick Name ("")
+        // student.nickName = student.nickName.substring(0,1).toUpperCase() + student.nickName.substring(1).toLowerCase();
+        if (student.middleName.substring(0,1) == `"`) {
+            student.nickName = student.middleName;
+            student.middleName = "";
+            student.nickName = student.nickName.split('"').join('');
+            student.nickName = student.nickName.substring(0,1).toUpperCase() + student.nickName.substring(1).toLowerCase();
+        } else {
+            student.nickName = "";
+            student.middleName = student.middleName.substring(0,1).toUpperCase() + student.middleName.substring(1).toLowerCase();
+        }
 
         // gender
         student.gender = jsonObject.gender.trim();
@@ -105,6 +123,7 @@ function displayList() {
     document.querySelector("#list tbody").innerHTML = "";
     // build a new list
     allStudents.forEach(displayStudent);
+    console.table(allStudents);
 }
 
 function displayStudent(student) {
