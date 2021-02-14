@@ -58,11 +58,22 @@ function prepareObjects(jsonData) {
         // const
 
         // firstName
-        student.firstName = flSpace.substring(0,firstSpace);
+        if (firstSpace == -1) {
+            student.firstName = flSpace;
+        } else {
+            student.firstName = flSpace.substring(0,firstSpace);
+        }
+        // student.firstName = flSpace.substring(0,firstSpace);
         student.firstName = student.firstName.substring(0,1).toUpperCase() + student.firstName.substring(1).toLowerCase();
 
         // lastName (-)
-        student.lastName = flSpace.substring(lastSpace).trim();
+        if (lastSpace == -1) {
+            // now removed so doesnt print "Leanne's name"
+            student.lastName = "";
+        } else {
+            student.lastName = flSpace.substring(lastSpace+1);
+        }
+        // student.lastName = flSpace.substring(lastSpace).trim();
         // student.lastName = student.lastName.substring(0, hyphen) 
         // student.lastName = student.lastName.split("-");
         const hyphen = student.lastName.indexOf("-");
