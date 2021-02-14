@@ -107,6 +107,18 @@ function prepareObjects(jsonData) {
         student.house = jsonObject.house.trim();
         student.house = student.house.substring(0,1).toUpperCase() + student.house.substring(1).toLowerCase();
 
+        // image : lastname(lowercase) on images / one lastname after - 
+        // lowercase: lastname_1firstname.png
+        // student.image = student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+        if (hyphen == -1) {
+            // document.getElementsByClassName("image").src = student.image;
+            student.image = `images/` + student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+        } else {
+            // document.getElementsByClassName("image").src = student.image;
+            student.image = `images/` + student.lastName.substring(hyphen+1).toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+        }
+        
+        
         // new object 
         // const name = jsonObject.fullname.split(" ");
         // student.firstName = name[0];
@@ -148,7 +160,10 @@ function displayStudent(student) {
     clone.querySelector("[data-field=nickName]").textContent = student.nickName;
     clone.querySelector("[data-field=gender]").textContent = student.gender;
     clone.querySelector("[data-field=house]").textContent = student.house;
-    // clone.querySelector("[data-field=image]").textContent = student.image;
+    clone.querySelector("[data-field=image]").textContent = student.image;
+    // clone.querySelector("[data-field=image]").(textContent) = student.image;
+    // clone.querySelector("[data-field=image]").src = student.image;
+    // clone.querySelector('img').content = student.image;
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 }
