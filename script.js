@@ -34,10 +34,12 @@ function prepareObjects(jsonData) {
         // new object created with cleaned data --> will be in allAnimals
         const student = Object.create(Student);
         // cleaning data
-        const firstSpace = fullname.indexOf(" ");
-        const lastSpace = fullname.lastIndexOf(" ");
+        // remove spacing around (remove first and last space)
+        const flSpace = jsonObject.fullname.trim();
         // spliting every word
-        // .trim()
+        // .split()
+        const firstSpace = flSpace.indexOf(" ");
+        const lastSpace = flSpace.lastIndexOf(" ");
         // first letter
         // .substring(0,1).toUpperCase();
         // rest
@@ -47,26 +49,49 @@ function prepareObjects(jsonData) {
         // caps after - 
         // SOMETHING
 
+        // fullName
+        // const fullName = jsonObject.fullname.split(" ");
+        // const firstName = fullName[0];
+        // const middleName = fullName[1];
+        // const
+
         // firstName
+        student.firstName = flSpace.substring(0,firstSpace);
+        student.firstName = student.firstName.substring(0,1).toUpperCase() + student.firstName.substring(1).toLowerCase();
 
         // lastName
-
+        student.lastName = flSpace.substring(lastSpace, 0);
+        student.lastName = student.lastName.substring(0,1).toUpperCase() + student.lastName.substring(1).toLowerCase();
         // middleName
+        student.middleName = flSpace.substring(firstSpace,lastSpace);
+        student.middleName = student.middleName.substring(0,1).toUpperCase() + student.middleName.substring(1).toLowerCase();
 
         // nickName
 
+        student.nickName = student.nickName.substring(0,1).toUpperCase() + student.nickName.substring(1).toLowerCase();
+
         // gender
+        student.gender = jsonObject.gender.trim();
+        student.gender = student.gender.substring(0,1).toUpperCase() + student.gender.substring(1).toLowerCase();
 
         // house
+        student.house = jsonObject.house.trim();
+        student.house = student.house.substring(0,1).toUpperCase() + student.house.substring(1).toLowerCase();
 
         // new object 
-        const texts = jsonObject.fullname.split(" ");
-        student.firstName = texts[0];
-        student.lastName = texts[];
-        student.middleName = texts[];
-        student.nickName = texts[]
-        student.gender = jsonObject.gender;
-        student.house = jsonObject.house;
+        // const name = jsonObject.fullname.split(" ");
+        // student.firstName = name[0];
+        console.log(student.firstName);
+        // student.lastName = name[0];
+        console.log(student.lastName);
+        // student.middleName = name[0];
+        console.log(student.middleName);
+        // student.nickName = name[0]
+        console.log(student.nickName);
+        // student.gender = jsonObject.gender;
+        console.log(student.gender);
+        // student.house = jsonObject.house;
+        console.log(student.house);
         // student.image = ;
 
         allStudents.unshift(student);
