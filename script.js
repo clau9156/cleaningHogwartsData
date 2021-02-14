@@ -112,11 +112,13 @@ function prepareObjects(jsonData) {
         // student.image = student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
         if (hyphen == -1) {
             // document.getElementsByClassName("image").src = student.image;
-            student.image = `images/` + student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+            // student.image = `images/` + student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+            // student.image = student.lastName.toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+            student.image = student.lastName.toLowerCase() + "_" + student.firstName.substring(0,1).toLowerCase() + ".png";
         } else {
             // document.getElementsByClassName("image").src = student.image;
-            student.image = `images/` + student.lastName.substring(hyphen+1).toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
-        }
+            student.image = student.lastName.substring(hyphen+1).toLowerCase() + `_${student.firstName.substring(0,1).toLowerCase()}` + `.png`;
+        } 
         
         
         // new object 
@@ -160,10 +162,11 @@ function displayStudent(student) {
     clone.querySelector("[data-field=nickName]").textContent = student.nickName;
     clone.querySelector("[data-field=gender]").textContent = student.gender;
     clone.querySelector("[data-field=house]").textContent = student.house;
-    clone.querySelector("[data-field=image]").textContent = student.image;
+    // clone.querySelector("[data-field=image]").textContent = student.image;
     // clone.querySelector("[data-field=image]").(textContent) = student.image;
     // clone.querySelector("[data-field=image]").src = student.image;
     // clone.querySelector('img').content = student.image;
+    clone.querySelector("img").src = `images/${student.image}`;
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
 }
